@@ -1,0 +1,16 @@
+FROM tensorflow/tensorflow:latest
+LABEL maintainer "hj <shgpwls374@gmail.com>"
+
+COPY ./lib/ /module
+
+ENV MODELPATH='/model'
+ENV LIBPATH='/module'
+ENV DATAPATH='/data'
+
+WORKDIR /app
+COPY train/train.py .
+
+RUN pip3 install pandas keras pillow flask
+
+ENTRYPOINT ["python"]
+CMD ["train.py"]
