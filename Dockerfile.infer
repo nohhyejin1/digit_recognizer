@@ -10,7 +10,7 @@ ENV LIBPATH='/module'
 WORKDIR /app
 COPY infer/infer.py .
 
-RUN pip3 install pandas keras pillow flask
+RUN pip3 install numpy pandas keras pillow flask
 
 ENTRYPOINT ["python"]
 CMD ["infer.py"]

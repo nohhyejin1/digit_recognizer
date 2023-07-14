@@ -2,10 +2,6 @@ import os
 import sys
 
 import numpy as np
-import pandas as pd
-
-from tensorflow import keras
-from keras import layers
 from keras.callbacks import EarlyStopping, ModelCheckpoint
 from keras.utils import to_categorical
 from PIL import Image
@@ -61,7 +57,7 @@ def train():
         monitor = 'val_loss'
     )
 
-    EPOCHS = 300
+    EPOCHS = 50
     BATCH_SIZE = 64
 
     history = model.fit(
@@ -73,7 +69,7 @@ def train():
         verbose = 1
     )
     
-    return history.history['accuracy']
+    return history.history['accuracy'][-1]*100
 
 if __name__ == "__main__":
     train()
