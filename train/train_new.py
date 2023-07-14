@@ -57,7 +57,7 @@ def train():
         monitor = 'val_loss'
     )
 
-    EPOCHS = 50
+    EPOCHS = 30
     BATCH_SIZE = 64
 
     history = model.fit(
