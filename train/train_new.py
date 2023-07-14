@@ -10,14 +10,19 @@ from keras.callbacks import EarlyStopping, ModelCheckpoint
 from keras.utils import to_categorical
 from PIL import Image
 
-from digit_recognizer import DigitRecognizer
-
 def train():
     data_path = os.environ.get('DATAPATH')
+    if data_path is None:
+            data_path = "../data/"
     model_path = os.environ.get('MODELPATH')
+    if model_path is None:
+            model_path = '../model/'
     lib_path = os.environ.get('LIBPATH')
+    if lib_path is None:
+        lib_path = '../lib/'
 
     sys.path.append(lib_path)
+    from digit_recognizer import DigitRecognizer
 
     X, y = [], []
     for n in range(0,10):
@@ -30,8 +35,11 @@ def train():
     X = np.array(X)/255
     y = to_categorical(np.array(y))
 
-    np.random.shuffle(X)
-    np.random.shuffle(y)
+    s = np.arange(X.shape[0])
+    np.random.shuffle(s)
+
+    X = X[s]
+    y = y[s]
 
     train_size = int(len(y)*0.8)
     X_train, X_val, y_train, y_val = X[:train_size], X[train_size:], y[:train_size], y[train_size:]

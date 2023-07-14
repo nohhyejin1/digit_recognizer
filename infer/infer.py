@@ -1,11 +1,10 @@
-import numpy as np
-import pandas as pd
-
 import os
-from PIL import Image
+
+import numpy as np
 
 from keras.models import load_model
 from flask import Flask, request, jsonify
+from PIL import Image
 
 lib_path = os.environ.get('LIBPATH')
 model_path = os.environ.get('MODELPATH')
