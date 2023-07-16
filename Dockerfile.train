@@ -8,9 +8,9 @@ ENV LIBPATH='/module'
 ENV DATAPATH='/data'
 
 WORKDIR /app
-COPY train/train.py .
+COPY train/train_new.py .
 
 RUN pip3 install numpy pandas keras pillow flask
 
 ENTRYPOINT ["python"]
-CMD ["train.py"]
+CMD ["train_new.py"]
