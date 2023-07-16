@@ -22,10 +22,6 @@ def init():
     model = load_model(model_path + '/model.h5')       #3
     model.build((None, 28, 28, 1))
 
-init()
-app = Flask(__name__)                   #4
-app.debug = True                        #4
-
 def infer(img_file):
     try:
         image = np.array(Image.open(img_file).convert('L')) / 255.0
@@ -41,6 +37,10 @@ def infer(img_file):
     
     except Exception as e:
         return e, -1    #4
+
+init()
+app = Flask(__name__)                   #4
+app.debug = True                        #4
 
 @app.route('/recognize', methods=['POST'])          #4c
 def recog_image():
