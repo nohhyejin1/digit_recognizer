@@ -1,5 +1,4 @@
 #!/bin/sh
-alias python3=/c/Users/shgpw/AppData/Local/Programs/Python/Python311/python
 # pre-commit 훅 스크립트
 
 # 변경된 파일 목록 가져오기

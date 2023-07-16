@@ -32,13 +32,13 @@ if docker service ls --format '{{.Name}}' | grep -q inferservice; then
     docker service update --image inferimage:$infer_new_version --update-parallelism 1 --update-delay 10s inferservice
 else
     # 도커 스웜 서비스 생성
-    docker service create -t --mount type=bind,source=C:/Users/shgpw/work/docker/deploy_2/model,target=/model -p 5001:80 --replicas=3 --name inferservice inferimage:$infer_new_version
+    docker service create -t --mount type=bind,source=./model,target=/model -p 5001:80 --replicas=3 --name inferservice inferimage:$infer_new_version
 fi
 
-export DOCKER_USERNAME=shgpwls374
-docker login --username $DOCKER_USERNAME --password-stdin
-docker tag inferimage:$infer_new_version shgpwls374/inferimage:$infer_new_version
-docker tag inferimage:latest shgpwls374/inferimage:latest
+# export DOCKER_USERNAME=shgpwls374
+# docker login --username $DOCKER_USERNAME --password-stdin
+# docker tag inferimage:$infer_new_version shgpwls374/inferimage:$infer_new_version
+# docker tag inferimage:latest shgpwls374/inferimage:latest
 
-docker push shgpwls374/inferimage:$infer_new_version
-docker push shgpwls374/inferimage:latest
+# docker push shgpwls374/inferimage:$infer_new_version
+# docker push shgpwls374/inferimage:latest
