@@ -42,7 +42,7 @@ def infer(img_file):
     except Exception as e:
         return e, -1    #4
 
-@app.route('/recognize', methods=['POST'])          #4
+@app.route('/recognize', methods=['POST'])          #4c
 def recog_image():
     if 'image' not in request.files:                #4
         return "No image file uploaded", 400        #4
