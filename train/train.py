@@ -9,13 +9,16 @@ from PIL import Image
 def train():
     data_path = os.environ.get('DATAPATH')
     if data_path is None:
-        data_path = "../data/"
+        data_path = "./data/"
+        print(data_path)
+
     model_path = os.environ.get('MODELPATH')
     if model_path is None:
-        model_path = '../model/'
+        model_path = './model/'
+
     lib_path = os.environ.get('LIBPATH')
     if lib_path is None:
-        lib_path = '../lib/'
+        lib_path = './lib/'
 
     sys.path.append(lib_path)
     from digit_recognizer import DigitRecognizer
@@ -34,8 +37,7 @@ def train():
     s = np.arange(X.shape[0])
     np.random.shuffle(s)
 
-    X = X[s]
-    y = y[s]
+    X, y = X[s], y[s]
 
     train_size = int(len(y)*0.8)
     X_train, X_val, y_train, y_val = X[:train_size], X[train_size:], y[:train_size], y[train_size:]
@@ -48,7 +50,7 @@ def train():
     )
 
     es = EarlyStopping(
-        patience = 20
+        patience = 10
     )
 
     ckpt = ModelCheckpoint(
@@ -57,7 +59,7 @@ def train():
         monitor = 'val_loss'
     )
 
-    EPOCHS = 30
+    EPOCHS = 100
     BATCH_SIZE = 64
 
     history = model.fit(

@@ -1,0 +1,38 @@
+# Directory
+
+# decive setting
+# Turn it to True if needed
+use_cuda: False
+device_num: 0
+num_workers: 4
+
+# Dataset setting (Directory change)
+train_data_green: 'train_green.csv'
+val_data_green: 'val_green.csv'
+
+# model store
+PATH: './param/baseline.pt'
+
+#####################################################
+loss_weight: 1
+
+# print loss & save parameter
+print_loss_iter: 100
+save_parameter_iter: 1000
+
+# Training hyper-parameters
+max_iteration: 100000
+check_point: 0
+SIGMA: 2
+epoch: 1000
+min_val_loss: 20000000
+patient_threshold: 10
+Probability_of_augmentation : 0.8
+cnum: 64
+learning_rate: 0.0005
+beta1: 0.5
+beta2: 0.9
+batch_size: 256
+test_batch_size: 256
+shuffle: True
+drop_last: True
