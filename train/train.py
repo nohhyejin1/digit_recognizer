@@ -20,6 +20,7 @@ def train():
     patience = config['patience']
 
     sys.path.append(lib_path)
+    
     from digit_recognizer import DigitRecognizer
 
     X, y = [], []
