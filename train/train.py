@@ -8,7 +8,7 @@ from PIL import Image
 import yaml
 
 def train():
-    with open('config.yml', mode='r', encoding='utf8') as file:
+    with open('config.yaml', mode='r', encoding='utf8') as file:
         config = yaml.load(file, Loader=yaml.Loader)
 
     data_path = config['data_path']
