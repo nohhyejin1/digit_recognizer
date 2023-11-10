@@ -5,20 +5,19 @@ import numpy as np
 from keras.callbacks import EarlyStopping, ModelCheckpoint
 from keras.utils import to_categorical
 from PIL import Image
+import yaml
 
 def train():
-    data_path = os.environ.get('DATAPATH')
-    if data_path is None:
-        data_path = "./data/"
-        print(data_path)
+    with open('config.yml', mode='r', encoding='utf8') as file:
+        config = yaml.load(file, Loader=yaml.Loader)
 
-    model_path = os.environ.get('MODELPATH')
-    if model_path is None:
-        model_path = './model/'
+    data_path = config['data_path']
+    model_path = config['model_path']
+    lib_path = config['lib_path']
 
-    lib_path = os.environ.get('LIBPATH')
-    if lib_path is None:
-        lib_path = './lib/'
+    epoch = config['epoch']
+    batch_size = config['batch_size']
+    patience = config['patience']
 
     sys.path.append(lib_path)
     from digit_recognizer import DigitRecognizer
@@ -50,7 +49,7 @@ def train():
     )
 
     es = EarlyStopping(
-        patience = 10
+        patience = patience
     )
 
     ckpt = ModelCheckpoint(
@@ -59,13 +58,10 @@ def train():
         monitor = 'val_loss'
     )
 
-    EPOCHS = 100
-    BATCH_SIZE = 64
-
     history = model.fit(
         X_train, y_train,
-        epochs = EPOCHS,
-        batch_size = BATCH_SIZE,
+        epochs = epoch,
+        batch_size = batch_size,
         validation_data = (X_val, y_val),
         callbacks = [es, ckpt],
         verbose = 1
