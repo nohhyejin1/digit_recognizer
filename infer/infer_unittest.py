@@ -1,7 +1,7 @@
 import unittest
 import os
 import random
-from infer_new import infer
+from infer import infer
 from parameterized import parameterized
 from flask import Flask
 

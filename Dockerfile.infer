@@ -6,7 +6,6 @@ COPY ./lib/ /module
 ENV MODELPATH='/model'
 ENV LIBPATH='/module'
 
-
 WORKDIR /app
 COPY infer/infer_new.py .
 

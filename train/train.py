@@ -9,10 +9,10 @@ from PIL import Image
 def train():
     data_path = os.environ.get('DATAPATH')
     if data_path is None:
-            data_path = "../data/"
+        data_path = "../data/"
     model_path = os.environ.get('MODELPATH')
     if model_path is None:
-            model_path = '../model/'
+        model_path = '../model/'
     lib_path = os.environ.get('LIBPATH')
     if lib_path is None:
         lib_path = '../lib/'
