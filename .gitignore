@@ -2,4 +2,4 @@
 venv/*
 githook/*
 data/*
-model/model.h5
+model/*.h5

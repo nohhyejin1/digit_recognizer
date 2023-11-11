@@ -1,5 +1,5 @@
 import unittest
-from train import train
+from train_code import train
 
 class Test(unittest.TestCase):
     def test_train(self):

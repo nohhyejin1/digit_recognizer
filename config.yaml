@@ -1,6 +1,6 @@
-data_path: '../data/'
-model_path: '../model/'
-lib_path: '../lib/'
+data_path: './data/'
+model_path: './model/'
+lib_path: './lib/'
 
 epoch: 100
 batch_size: 64
