@@ -8,7 +8,7 @@ from PIL import Image
 import yaml
 
 def train():
-    with open('config.yaml', mode='r', encoding='utf8') as file:
+    with open('../config.yaml', mode='r', encoding='utf8') as file:
         config = yaml.load(file, Loader=yaml.Loader)
 
     data_path = config['data_path']
@@ -20,7 +20,7 @@ def train():
     patience = config['patience']
 
     sys.path.append(lib_path)
-    
+
     from digit_recognizer import DigitRecognizer
 
     X, y = [], []
@@ -43,6 +43,7 @@ def train():
     X_train, X_val, y_train, y_val = X[:train_size], X[train_size:], y[:train_size], y[train_size:]
 
     model = DigitRecognizer()
+
     model.compile(
         optimizer='adam',
         loss='categorical_crossentropy',
