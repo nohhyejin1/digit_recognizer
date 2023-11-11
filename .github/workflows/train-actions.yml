@@ -21,5 +21,5 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
       
-      - name: Run train/train.py
-        run: python train/train.py
+      - name: Run train/train_code.py
+        run: python train/train_code.py
